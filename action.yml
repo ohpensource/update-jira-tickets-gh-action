@@ -1,0 +1,21 @@
+name: "update-jira-tickets-gh-action"
+description: "GH action that updates JIRA tickets. The action will look for commits between the latest two tags, find the associated JIRA tickets and update them accordingly to the release. The update will only change the field provided by the user."
+inputs:
+  jira-hostname:
+    description: "jira hostname for the API url."
+    required: true
+  jira-user-email:
+    description: "user email for API authentication"
+    required: true
+  jira-api-token:
+    description: "API token for authentication"
+    required: true
+  jira-field-name:
+    description: "Ticket field to be updated. Custom fields are named with its id. Example: customfield_10246"
+    required: true
+  jira-field-value:
+    description: "Value to set in the jira-field-name provided"
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
