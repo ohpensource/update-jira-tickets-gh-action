@@ -17,7 +17,6 @@ commits.forEach((x, i) => {
     logger.logKeyValuePair(`commit ${i}`, x)
 });
 
-
 logger.logAction('Tickets')
 let tickets = []
 commits
