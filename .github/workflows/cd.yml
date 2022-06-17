@@ -4,7 +4,7 @@ on:
     branches: [main]
 jobs:
   detect-changes-in-js-files:
-    name: Detect changes in tf-show-parser folder
+    name: Detect changes in JS files
     runs-on: ubuntu-latest
     outputs:
       any_change: ${{ steps.detect-changes.outputs.any_change }}
@@ -12,10 +12,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Detect changes in tf-show-parser
+      - name: Detect changes
         id: detect-changes
         run: |
-          if [ "$(git diff --name-only --ignore-space-at-eol HEAD HEAD~1 | grep '.yml' | wc -l)" -gt "0" ]; then
+          if [ "$(git diff --name-only --ignore-space-at-eol HEAD HEAD~1 | grep '.js' | wc -l)" -gt "0" ]; then
             echo "::set-output name=any_change::true"
           fi
 
@@ -24,9 +24,6 @@ jobs:
     needs: detect-changes-in-js-files
     if: needs.detect-changes-in-js-files.outputs.any_change == 'true'
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: tf-show-parser
     steps:
       - uses: actions/checkout@v3
         with:
