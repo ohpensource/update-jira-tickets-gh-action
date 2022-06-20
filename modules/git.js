@@ -29,6 +29,10 @@ const getCommitsBetweenTags = (oldestTag, newestTag) => {
     .split(`${splitText}\n`)
     .map((commitInfoText) => getCommitInfo(commitInfoText));
 
+  if (commits.length === 1 && commits[0].shortHash === "") {
+    commits = []
+  }
+
   return commits;
 };
 

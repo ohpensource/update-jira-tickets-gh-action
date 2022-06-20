@@ -35,6 +35,10 @@ const getCommitsBetweenTags = (oldestTag, newestTag) => {
     .split(`${splitText}\n`)
     .map((commitInfoText) => getCommitInfo(commitInfoText));
 
+  if (commits.length === 1 && commits[0].shortHash === "") {
+    commits = []
+  }
+
   return commits;
 };
 
@@ -3655,7 +3659,10 @@ const JIRA_FIELD_VALUE = core.getInput('jira-field-value', { required: true });
 logger.logAction('Versions')
 const tags = git.getLatestTwoTags()
 logger.logKeyValuePair(`tags`, tags)
-commits = git.getCommitsBetweenTags(tags[1], tags[0])
+let commits = git.getCommitsBetweenTags(tags[1], tags[0])
+if (commits.length === 0) {
+    commits = git.getCommitsBetweenTags(tags[0], tags[1])
+}
 
 logger.logAction('Commits')
 commits.forEach((x, i) => {
