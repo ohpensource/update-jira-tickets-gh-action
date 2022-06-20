@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: update last release tickets
-        uses: ohpensource/update-jira-tickets-gh-action@v0.0.1
+        uses: ohpensource/update-jira-tickets-gh-action@v0.0.3
         with:
           jira-hostname: ${{ secrets.JIRA_HOST_NAME }}
           jira-user-email: ${{ secrets.JIRA_USER_EMAIL }}
