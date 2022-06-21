@@ -1,3 +1,9 @@
+# :confetti_ball: 0.0.5 (2022-06-21T14:19:44.642Z)
+- - -
+## :newspaper: Others
+* [skip ci] compile js code for node into one file
+- - -
+- - -
 # :confetti_ball: 0.0.4 (2022-06-21T09:47:08.710Z)
 - - -
 ## :newspaper: Others
