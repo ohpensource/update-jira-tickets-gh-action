@@ -73,7 +73,7 @@ const getCommitInfo = (commitToParse) => {
 };
 
 getLatestTwoTags = () => child
-  .execSync(`git tag --sort=-version:refname | head -n 2`)
+  .execSync(`git tag --sort=-version:refname --merged| head -n 2`)
   .toString("utf-8")
   .split(`\n`)
   .filter(x => x.toString().length > 0)
